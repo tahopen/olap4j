@@ -1,0 +1,90 @@
+# Tasks for olap4j 0.9 
+# Author: Julian Hyde
+
+Introduction: How to use this document
+--------------------------------------
+
+This document is a list of tasks to be accomplished before olap4j-0.9 is released.
+
+The tasks are grouped by category, but sometimes different aspects of the same task appear in multiple categories, so be smart when selecting which tasks to work on. For example, writing a description of the Cube class appears as a specification task and a javadoc task.
+
+Pick some tasks to work on - most of them are quite short - make the changes to the specification, delete the completed tasks from this list, and check in your changes along with the new version of this file.
+
+Remember that other people may be editing this file, so avoid non-mergeable edits.
+
+Specification
+-------------
+
+* D.1 describe how members of axis can be accessed via iterator or list, with code examples 
+* 2.8 query model - barry and/or james complete?
+* 2.9 layout - remove from spec? 
+* add mdx parser and mdx parse tree model to specification 
+
+Javadoc
+-------
+
+* remove class OlapTest
+
+Code
+----
+
+* add method(s) to Cube to look up a member and its relatives by unique name
+* fix 4 TODOs in ParserTest 
+
+Testing
+-------
+
+* Remove site-specifics from test code.
+* Ensure that there is a unit test for every method in every public class or interface. 
+* Internationalization test, including Connection.getLocale(), Query.getLocale(), and all methods with Locale methods or results
+* Test access control. The metadata (e.g. members & hierarchies) should reflect what the current user/role can see. For example, USA.CA.SF has no children. This test should test every method which returns a metadata element or collection of metadata elements. 
+* ConnectionTest (428, 8) // todo: test statement with no slicer
+* ConnectionTest (596, 12) // todo: test all of the PreparedOlapStatement.setXxx methods 
+* Test methods in class Cell. (see ConnectionTest.testCell) 
+* Test methods in class CellSetAxis. (see ConnectionTest.testCellSetAxis) 
+* Test methods in OlapResultAxisMetaData (see ConnectionTest.testOlapResultAxisMetaData) 
+* Test cell and dimension properties (in ConnectionTest, see "todo: submit a query with cell and dimension properties, and make sure the properties appear in the result set") 
+* Test scrolling (in ConnectionTest, see "todo: submit a query where you ask for different scrolling") 
+
+Not in scope for olap4j 0.9
+---------------------------
+ 
+* convert parser to javacc 
+* XMLA driver 
+
+XMLA driver tasks
+-----------------
+
+* Member cache as part of cube (weak hash map)
+** Use member cache for XmlaOlap4jHierarchy.getDefaultMember (store member in hierarchy, so Hierarchy.getDefaultMember never throws OlapException)
+** Use member cache for XmlaOlap4jHierarchy.getRootMembers
+** Consider using member cache for XmlaOlap4jLevel.getMembers
+** Use member cache for XmlaOlap4jMember.getParentMember (lookup parent member before creating member, and store pointer rather than name of parent member)
+
+* On creating XmlaOlap4jDimension, lookup and store default hierarchy; obsolete defaultHierarchyUniqueName field
+
+* Create enum Measure.DataType (possibly related to Property.Datatype), and change method 'int Measure.dataType()' to 'Datatype Measure.getDatatype()'
+
+* Reduce memory usage by converting some of XmlaOlap4jMember's fields into properties (e.g. ordinal, cardinality)
+
+* Add test for Member.getAncestorMembers
+
+* Remove dependency on xerces; use JDK XML parser.
+
+Changes since 0.9
+-----------------
+
+* Various methods now throw OlapException
+
+* Rename 'enum Property.Scope' to 'Property.TypeFlag', and method
+  'Scope Property.getScope()' becomes 'Set<TypeFlag> Property.getType()'. 
+
+General guidelines
+------------------
+ 
+* Coding standards are as for mondrian: 80 characters, indent 4, no tabs 
+* Javadoc: all public classes and members have javadoc, including @param, @return, @throws 
+* Do not write javadoc for overriding/implementing methods 
+* Must be javadoc clean on checkin 
+
+# Ends
