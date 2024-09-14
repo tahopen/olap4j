@@ -71,6 +71,7 @@
   <issueManagement />
 
   <distributionManagement>
+<!--  
     <repository>
       <uniqueVersion>false</uniqueVersion>
       <id>pentaho</id>
@@ -78,6 +79,7 @@
       <url>http://repository.pentaho.org/artifactory/pentaho</url>
       <layout>default</layout>
     </repository>
+-->
   </distributionManagement>
 
   <properties>
@@ -215,6 +217,7 @@
   </dependencies>
 
   <repositories>
+  <!--
     <repository>
       <releases>
         <enabled>true</enabled>
@@ -225,6 +228,7 @@
       <name>Pentaho</name>
       <url>http://repo.pentaho.org/artifactory/repo</url>
     </repository>
+  -->  
   </repositories>
 
   <build>
