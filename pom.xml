@@ -71,15 +71,7 @@
   <issueManagement />
 
   <distributionManagement>
-<!--  
-    <repository>
-      <uniqueVersion>false</uniqueVersion>
-      <id>pentaho</id>
-      <name>Pentaho Open Repository</name>
-      <url>http://repository.pentaho.org/artifactory/pentaho</url>
-      <layout>default</layout>
-    </repository>
--->
+
   </distributionManagement>
 
   <properties>
@@ -104,7 +96,7 @@
     <maven-replacer-plugin.version>1.4.0</maven-replacer-plugin.version>
     <maven-source-plugin.version>2.1.2</maven-source-plugin.version>
     <maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
-    <mondrian-data-foodmart.version>0.9-SNAPSHOT</mondrian-data-foodmart.version>
+    <mondrian-data-foodmart.version>0.1.0.0-SNAPSHOT</mondrian-data-foodmart.version>
     <mondrian.version>4.3.0.1-130</mondrian.version>
     <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
     <rt-java5.version>1.5.0_22</rt-java5.version>
@@ -210,25 +202,14 @@
       <version>${servlet-api.version}</version>
     </dependency>
     <dependency>
-      <groupId>pentaho</groupId>
-      <artifactId>mondrian-data-foodmart</artifactId>
+      <groupId>org.tahopen</groupId>
+      <artifactId>drianmon-data-foodmart</artifactId>
       <version>${mondrian-data-foodmart.version}</version>
     </dependency>
   </dependencies>
 
   <repositories>
-  <!--
-    <repository>
-      <releases>
-        <enabled>true</enabled>
-        <updatePolicy>always</updatePolicy>
-        <checksumPolicy>warn</checksumPolicy>
-      </releases>
-      <id>pentaho</id>
-      <name>Pentaho</name>
-      <url>http://repo.pentaho.org/artifactory/repo</url>
-    </repository>
-  -->  
+
   </repositories>
 
   <build>
